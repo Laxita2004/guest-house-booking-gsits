@@ -7,7 +7,7 @@ const authRoutes = require("./routes/authRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const authMiddleware = require("./middleware/authMiddleware");
 const adminRoutes = require("./routes/adminRoutes");
-
+const paymentRoutes = require('./routes/payment');
 
 dotenv.config();
 
@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/auth", authRoutes);
 app.use("/bookings", authMiddleware.verifyToken, bookingRoutes);
 app.use("/admin", authMiddleware.verifyToken, adminRoutes);
+app.use('api/payment', paymentRoutes);
 
 
 // Default Route
